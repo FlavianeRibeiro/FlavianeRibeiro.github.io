@@ -1,0 +1,310 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+body {
+  background-color: #151515;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.cabecalho {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  background-color: #151515;
+  /*  box-shadow: 10px 10px 10px 5px #a04b96; */
+  width: 100%;
+}
+
+.cabecalho-logo {
+  width: 16%;
+}
+
+.cabecalho-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  color: white;
+}
+
+.cabecalho-link a {
+  color: white;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.cabecalho-link a:hover {
+  color: #a04b96;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.container-principal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(fundo.svg) no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
+.rede-social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-info {
+  background-image: linear-gradient(#a04b96, #5351b6);
+  color: white;
+  padding: 10px 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 45%;
+  border: 0px;
+}
+
+.info-nome {
+  color: white;
+  font-size: 35px;
+}
+.sobrenome {
+  color: #a04b96;
+}
+
+.principal-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.descricao {
+  color: white;
+}
+
+.img {
+  width: 30%;
+}
+
+.titulo {
+  color: #a04b96;
+}
+.container-sobre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sobre-descricao {
+  color: white;
+  font-size: 16px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  text-align: justify;
+}
+.container-habilidades {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  gap: 10px;
+  height: 70vh;
+}
+
+.habilidades-linguagem {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+}
+
+.accordion {
+  padding: 15px;
+  color: white;
+  display: flex;
+  text-align: center;
+  font-size: 50px;
+  border: 1px solid #a04b96;
+  border-radius: 25%;
+  width: 50px;
+  height: 50px;
+}
+
+.accordion i {
+  width: 20%;
+}
+
+.contianer-formacao {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.timeline {
+  position: relative;
+  width: 660px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 1em 0;
+  list-style-type: none;
+}
+
+.timeline:before {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  content: " ";
+  display: block;
+  width: 3px;
+  height: 100%;
+  margin-left: -3px;
+  background: white;
+}
+
+.timeline li {
+  padding: 1em 0;
+}
+
+.timeline li:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.card-info-r {
+  position: relative;
+  width: 300px;
+  float: right;
+}
+
+.card-info-l {
+  position: relative;
+  width: 300px;
+  float: left;
+  text-align: right;
+}
+
+.timeline-ano-r {
+  position: absolute;
+  top: -30%;
+  right: 103.8%;
+  width: 40px;
+  height: 24px;
+  text-align: center;
+  padding: 2px;
+  background: #a04b96;
+  border-radius: 10px;
+}
+
+.timeline-ano-l {
+  position: absolute;
+  top: -30%;
+  right: -16.2%;
+  width: 40px;
+  height: 24px;
+  text-align: center;
+  padding: 2px;
+  background: #a04b96;
+  border-radius: 10px;
+}
+
+.card-info-l .card-titulo:before {
+  position: absolute;
+  top: 50%;
+  right: -35px;
+  content: " ";
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  background: #a04b96;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+.card-info-r .card-titulo:before {
+  position: absolute;
+  top: 50%;
+  right: 110.2%;
+  content: " ";
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  background: #a04b96;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+.card-info-detalhe {
+  position: relative;
+  display: inline-block;
+}
+
+.card-titulo {
+  position: relative;
+  display: inline;
+  color: #a04b96;
+  padding: 6px 0px;
+  border-radius: 5px;
+
+  font-weight: 600;
+  text-align: left;
+}
+
+.card-texto {
+  margin: 1em 0.75em 0 0;
+
+  font-size: 0.77777em;
+  font-style: italic;
+  line-height: 1.5em;
+}
+
+progress[value] {
+  color: white;
+  background-color: #5351b6;
+  border-radius: 2px;
+}
+
+.panel {
+  display: none;
+  width: 35%;
+  transition: 1s;
+  background-color: #a04b96;
+  font-size: 14px;
+  color: white;
+  padding: 10px;
+  border-radius: 25px;
+  transition: 0.4s;
+}
+
+footer {
+  padding: 15px;
+  color: white;
+  text-align: center;
+  border-top: 1px solid white;
+}
