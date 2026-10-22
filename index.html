@@ -1,357 +1,380 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Flaviane Ribeiro</title>
-    <link href="public/style.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
-    />
-  </head>
-  <body>
-    <main class="container">
-      <header class="cabecalho">
-        <img src="public/logo.svg" alt="logo" class="cabecalho-logo" />
-        <div class="cabecalho-link">
-          <a href="#home">Home</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#habilidades">Habilidades</a>
-          <a href="#formacao">Qualificação</a>
-        </div>
-      </header>
-      <section class="container-principal">
-        <div class="rede-social">
-          <img src="public/instagram.svg" alt="instagram" />
-          <img src="public/github.svg" alt="github" />
-          <img src="public/linkedin.svg" alt="linkedin" />
-        </div>
-        <div class="principal-info" id="home">
-          <button class="btn-info">Olá, eu sou</button>
-          <div class="info-nome">
-            Flaviane <strong class="sobrenome">Ribeiro</strong>
-          </div>
-          <p class="descricao">Programadora Web | Vuejs + Nodejs</p>
-          <p class="descricao">Avançando para Pleno</p>
-        </div>
-      </section>
-      <section class="container-sobre" id="sobre">
-        <h1 class="titulo">Sobre</h1>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flaviane Ribeiro | Desenvolvedora Full Stack</title>
+  <meta name="description" content="Desenvolvedora Full Stack com mais de 5 anos criando aplicações web escaláveis com React, TypeScript, Vue.js e Node.js.">
 
-        <div class="sobre-descricao">
-          <img src="public/img-flaviane.svg" alt="img-flaviane" class="img" />
+  <!-- Fontes: Instrument Serif (títulos), Inter (texto), JetBrains Mono (detalhes) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Tokens de design ---------- */
+    :root {
+      --bg: #0a110b;
+      --bg-glow: #14231a;
+      --surface: #0f1a12;
+      --border: #1f2e22;
+      --text: #f2f1e8;
+      --muted: #9aa597;
+      --accent: #b5ea5c;
+      --accent-ink: #0a110b;
+      --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+      --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 85% -5%, var(--bg-glow), transparent 70%),
+        var(--bg);
+      background-attachment: fixed;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .container { width: min(100% - 3rem, 880px); margin-inline: auto; }
+
+    /* ---------- Navegação ---------- */
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 0;
+      font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+    }
+    .nav ul { display: flex; gap: 1.4rem; list-style: none; margin: 0; padding: 0; }
+    .nav a:hover { color: var(--accent); }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 4.5rem 0 3rem; }
+    .status {
+      font-family: var(--mono); font-size: 0.78rem; color: var(--accent);
+      display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1.2rem;
+    }
+    .status::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+    }
+    h1 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(3.4rem, 10vw, 5.2rem);
+      line-height: 0.95; letter-spacing: -0.02em; margin: 0 0 1.6rem;
+    }
+    h1 em { color: var(--accent); display: block; }
+    .lead { max-width: 30rem; color: var(--muted); font-size: 1.05rem; margin: 0 0 1.8rem; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .btn {
+      font-size: 0.85rem; font-weight: 500;
+      padding: 0.7rem 1.1rem; border-radius: 6px;
+      border: 1px solid var(--border); background: var(--surface);
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+    .btn.primary:hover { color: var(--accent-ink); transform: translateY(-1px); }
+
+    /* ---------- Números ---------- */
+    .stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      border-top: 1px solid var(--border);
+      padding: 2.4rem 0 3.6rem; margin-top: 2rem;
+    }
+    .stat strong {
+      display: block; font-family: var(--serif); font-weight: 400;
+      font-size: 2.4rem; line-height: 1; color: var(--accent);
+    }
+    .stat span { font-size: 0.78rem; color: var(--muted); }
+
+    /* ---------- Seções ---------- */
+    section { border-top: 1px solid var(--border); padding: 3.6rem 0; }
+    .label {
+      font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent); margin: 0 0 1.8rem;
+    }
+    h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; }
+
+    /* Competências */
+    .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.3rem 1.3rem 1.5rem;
+    }
+    .card h3 { font-size: 1.35rem; margin-bottom: 0.9rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tags span {
+      font-family: var(--mono); font-size: 0.68rem;
+      padding: 0.28rem 0.55rem; border-radius: 4px;
+      background: #162119; border: 1px solid var(--border);
+    }
+
+    /* Experiência */
+    .job {
+      display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem 2rem;
+      margin-bottom: 3rem;
+    }
+    .job:last-child { margin-bottom: 0; }
+    .period { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); padding-top: 0.5rem; }
+    .job h3 { font-size: 1.7rem; line-height: 1.2; }
+    .company { color: var(--accent); font-size: 0.9rem; margin: 0.35rem 0 0; }
+    .promo { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); margin: 0.2rem 0 0; }
+    .job ul { list-style: none; margin: 1.2rem 0 0; padding: 0; }
+    .job li {
+      position: relative; padding-left: 1.2rem; margin-bottom: 0.55rem;
+      color: var(--muted); font-size: 0.88rem;
+    }
+    .job li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+
+    /* Formação e idiomas */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .item h3 { font-size: 1.3rem; }
+    .item p { margin: 0.1rem 0 1.2rem; font-size: 0.85rem; color: var(--muted); }
+    .item.small p { font-size: 0.78rem; margin-top: 0.5rem; }
+
+    /* Contato */
+    .contact { text-align: center; padding: 4.5rem 0 3.5rem; }
+    .contact .label { margin-bottom: 1rem; }
+    .contact h2 { font-size: clamp(2.4rem, 7vw, 3.8rem); line-height: 1.05; letter-spacing: -0.01em; }
+    .contact h2 em { color: var(--accent); }
+    .mail {
+      display: inline-block; margin-top: 2rem; padding-bottom: 0.2rem;
+      font-family: var(--mono); font-size: 1rem;
+      border-bottom: 1px solid var(--text);
+    }
+    .mail:hover { color: var(--accent); border-color: var(--accent); }
+    .phone { margin: 1rem 0 0; font-size: 0.9rem; color: var(--muted); }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 1.5rem 0 2rem;
+      font-family: var(--mono); font-size: 0.7rem; color: var(--muted);
+    }
+
+    /* ---------- Responsivo ---------- */
+    @media (max-width: 720px) {
+      .hero { padding-top: 3rem; }
+      .stats { grid-template-columns: 1fr; gap: 1.4rem; }
+      .skills, .two-col { grid-template-columns: 1fr; }
+      .job { grid-template-columns: 1fr; gap: 0.3rem; margin-bottom: 2.4rem; }
+      .period { padding-top: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegação -->
+  <header class="container">
+    <nav class="nav" aria-label="Principal">
+      <a href="#topo">FR.dev</a>
+      <ul>
+        <li><a href="#experiencia">experiência</a></li>
+        <li><a href="#contato">contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="topo">
+
+    <!-- Hero -->
+    <div class="container hero">
+      <p class="status">Disponível para novos projetos · Vila Velha, ES</p>
+      <h1>Flaviane <em>Ribeiro</em></h1>
+      <p class="lead">Desenvolvedora Full Stack com mais de 5 anos criando aplicações web escaláveis com React, TypeScript, Vue.js e Node.js — do banco de dados à interface.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:flaviane.rp@outlook.com">Entrar em contato</a>
+        <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong>5+</strong><span>anos de experiência</span></div>
+        <div class="stat"><strong>70%</strong><span>menos tempo de resposta</span></div>
+        <div class="stat"><strong>40+</strong><span>integrações</span></div>
+      </div>
+    </div>
+
+    <!-- Competências -->
+    <section id="competencias">
+      <div class="container">
+        <p class="label">01 / Competências</p>
+        <div class="skills">
+          <article class="card">
+            <h3>Front-end</h3>
+            <div class="tags">
+              <span>React</span><span>TypeScript</span><span>JavaScript ES6+</span><span>Vue.js</span>
+              <span>Angular</span><span>AngularJS</span><span>HTML5</span><span>CSS3</span><span>Bootstrap</span>
+              <span>Design Responsivo</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Back-end</h3>
+            <div class="tags">
+              <span>Node.js</span><span>REST API</span><span>Arquitetura MVC</span>
+              <span>Integração de Sistemas</span><span>Regras de Negócio</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Bancos de dados</h3>
+            <div class="tags">
+              <span>MySQL</span><span>PostgreSQL</span><span>SQL</span><span>MongoDB</span><span>Neo4j</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Ferramentas</h3>
+            <div class="tags">
+              <span>Git</span><span>GitHub/GitLab</span><span>Docker</span><span>CI/CD</span><span>Scrum</span>
+              <span>Testes Funcionais</span><span>Documentação Técnica</span><span>Prototipação</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiência -->
+    <section id="experiencia">
+      <div class="container">
+        <p class="label">02 / Experiência</p>
+
+        <article class="job">
+          <div class="period">04/2025 — 08/2026</div>
           <div>
-            <p class="">
-              Olá, vim contar um pouco da minha jornada em TI.
-            </p>
-            <p>
-              Foi em 2013 que tive meu primeiro contato com programação, quando
-              ingressei em um curso técnico na intuição Vasco Coutinho, tendo
-              aulas de logica de programação, Rede, Programas do Windowns, HTML
-              e CSS, programação em PHP, JAVA, JavScript, entre outros, neste
-              curso quando me apaixonei por programação WEB. Minha próxima
-              jornada se deu na universidade de Vila Velha, onde obtive meu
-              Bacharelado em Ciência da computação, e neste meio termo, obtive
-              estágios no quais contribuíram e muito para meu aprendizado. Sendo
-              o primeiro estágio fui contratada para fazer o front-end do
-              sistema que os mesmos desenvolviam, logo depois de um tempo fui
-              convidada e ir para o back-end, trabalhando então novamente com
-              PHP. Em meu segundo estágio, pude contribuir em muito no que havia
-              aprendido com o primeiro estágio, tendo as seguintes funções:
-              Prototipação de telas, documentação do sistema, estrutura do
-              front-end, CSS, isto utilizando o framework Angular, e trabalhando
-              também com nodejs, no qual tive conhecimento nas aulas da
-              universidade. Logo trabalhei tanto no front-end quanto no
-              back-end. O terceiro estágio, pude trabalhar com Vue, no qual tive
-              facilidade de aprender devido os conhecimentos com Angular, neste
-              estágio trabalhei com o front e integração com API desenvolvida em
-              Nodejs, que logo após também comecei a desenvolver. Sendo então
-              contratada na mesma como desenvolvedora Jr.
-            </p>
+            <h3>Desenvolvedora Full Stack</h3>
+            <p class="company">Projeto Autônomo (Marketplace de Prestadores de Serviços)</p>
+            <ul>
+              <li>Desenvolvi do zero uma plataforma web de busca e contratação de prestadores, com React no front-end e Node.js no back-end.</li>
+              <li>Construí APIs RESTful para usuários, categorias, solicitações e avaliações, aplicando arquitetura MVC.</li>
+              <li>Modelei o banco MySQL (clientes, prestadores, serviços e histórico de atendimentos).</li>
+              <li>Implementei filtros por categoria, localização e disponibilidade, melhorando a experiência de busca.</li>
+              <li>Integrei front-end e back-end com validação de dados e atualização em tempo real das solicitações.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="period">02/2023 — 06/2025</div>
+          <div>
+            <h3>Analista Full Stack Pleno</h3>
+            <p class="company">Talent Group (cliente: QualiCorp)</p>
+            <p class="promo">Analista Full Stack Júnior · 02/2023 · [mm/2024]</p>
+            <ul>
+              <li>Desenvolvi e evoluí aplicações web com Vue.js e Node.js, com foco em usabilidade, escalabilidade e manutenibilidade.</li>
+              <li>Criei e mantive APIs RESTful seguras para integração entre serviços internos e sistemas externos.</li>
+              <li>Modelei dados em Neo4j (NoSQL) e otimizei consultas, reduzindo 70% do tempo de resposta.</li>
+              <li>Automatizei integrações entre sistemas, garantindo consistência dos dados [+40 integrações].</li>
+              <li>Corrigi bugs e implementei melhorias de performance, aumentando a estabilidade das aplicações.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="period">08/2022 — 02/2023</div>
+          <div>
+            <h3>Analista de Suporte (com atuação em desenvolvimento)</h3>
+            <p class="company">Talent Group (cliente: QualiCorp)</p>
+            <ul>
+              <li>Diagnostiquei e resolvi incidentes via Service Desk, corrigindo bugs e executando manutenções em banco de dados.</li>
+              <li>Desenvolvi pequenas funcionalidades e melhorias, validando regras de negócio com testes funcionais.</li>
+              <li>Atuei direto com usuários e solicitantes na análise de causa raiz, o que levou à promoção para Analista Full Stack.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="period">09/2019 — 08/2022</div>
+          <div>
+            <h3>Programadora Full Stack Júnior</h3>
+            <p class="company">Compet Engenharia</p>
+            <ul>
+              <li>Desenvolvi soluções web com Vue.js e TypeScript, com componentes reutilizáveis e layouts responsivos.</li>
+              <li>Modelei e otimizei bancos MySQL, garantindo integridade e desempenho.</li>
+              <li>Produzi protótipos de telas, fluxos de navegação e documentação técnica, alinhando requisitos entre negócio e desenvolvimento.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="period">01/2020 — 01/2021</div>
+          <div>
+            <h3>Desenvolvedora Full Stack</h3>
+            <p class="company">Projeto: Sistema para Clínica Farmacêutica</p>
+            <ul>
+              <li>Desenvolvi sistema web com Angular e TypeScript, entregando novas funcionalidades e melhorias contínuas.</li>
+              <li>Criei APIs de integração entre sistemas e otimizei o banco MySQL.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="period">07/2018 — 09/2019</div>
+          <div>
+            <h3>Programadora Full Stack (Estágio)</h3>
+            <p class="company">Formalis Informática</p>
+            <ul>
+              <li>Desenvolvi interfaces responsivas com HTML5, CSS3, Bootstrap e AngularJS.</li>
+              <li>Criei funcionalidades back-end com Node.js e modelei bancos MySQL.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Formação e idiomas -->
+    <section>
+      <div class="container two-col">
+        <div>
+          <p class="label">03 / Formação</p>
+          <div class="item">
+            <h3>Pós em Projetos de Sistemas de Informação</h3>
+            <p>Descomplica · 2021</p>
+          </div>
+          <div class="item">
+            <h3>Bacharelado em Ciência da Computação</h3>
+            <p>UVV · 2016 — 2020</p>
           </div>
         </div>
-      </section>
-      <section class="container-habilidades" id="habilidades">
-        <h1 class="titulo">Habilidades</h1>
-        <div class="habilidades-linguagem">
-          <div class="accordion">
-            <i class="devicon-php-plain"></i>
-          </div>
-          <div class="accordion">
-            <i class="devicon-nodejs-plain"></i>
-          </div>
-          <div class="accordion"><i class="devicon-mysql-plain"></i></div>
-          <div class="accordion">
-            <i class="devicon-sequelize-plain"></i>
-          </div>
-          <div class="accordion">
-            <i class="devicon-html5-plain"></i>
-          </div>
-          <div class="accordion">
-            <i class="devicon-css3-plain"></i>
-          </div>
-          <div class="accordion">
-            <i class="devicon-javascript-plain"></i>
-          </div>
-          <div class="accordion">
-            <i class="devicon-angularjs-plain"></i>
-          </div>
-          <div class="accordion">
-            <i class="devicon-vuejs-plain"></i>
-          </div>
-          <div class="accordion">
-            <i class="devicon-react-original"></i>
+        <div>
+          <p class="label">04 / Idiomas</p>
+          <div class="item small">
+            <h3>Inglês técnico</h3>
+            <p>Pessoa com Deficiência (PcD)</p>
           </div>
         </div>
-      </section>
-      <section class="contianer-formacao" id="formacao">
-        <h1 class="titulo">
-          Cursos de Qualificação | Trabalhos
-        </h1>
-        <ul class="timeline">
-          <li>
-            <div class="card-info-l">
-              <div class="timeline-ano-l">2013</div>
-              <div class="card-info-detalhe">
-                <span class="card-titulo">Curso técnico de informática</span>
-              </div>
-              <p class="card-texto">
-                Instituição: Vasco Coutinho <br />
-                Formação: 22/12/2014 - 1200 horas
-              </p>
-            </div>
-          </li>
-          <li>
-            <!-- <div class="timeline-ano">2016</div> -->
-            <div class="card-info-l">
-              <div class="timeline-ano-l">2016</div>
-              <div class="card-info-detalhe">
-                <span class="card-titulo">
-                  Bacharel em Ciência da Computação</span
-                >
-              </div>
-              <p class="card-texto">
-                Instituição: Universidade Vila Velha <br />
-                Formação: 07/2020 - 3.780h horas
-              </p>
-            </div>
-            <br />
-            <br />
-            <br />
-            <div class="card-info-r">
-              <div class="timeline-ano-r">2017</div>
-              <div class="card-info-detalhe">
-                <span class="card-titulo">Controlook Intelligent System</span>
-              </div>
-              <p class="card-texto">
-                Período: 11/2017 a 06/2018 <br />
-                Função: Front-end (html, css, javascript, sass, botstrap) e
-                Back-end (PHP, json, js)
-              </p>
-            </div>
-            <br />
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="card-info-detalhe">
-                <span class="card-titulo"
-                  >Concurso de Inocação Tecnológica INOVATECH</span
-                >
-              </div>
-              <p class="card-texto">
-                16 e 17 de maio 2017 <br />
-                Aplicativo Find-me, com finalizade de compartilhamento de
-                localização
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="card-info-detalhe">
-                <span class="card-titulo">Curso de MySQL</span>
-              </div>
-              <p class="card-texto">
-                Instituição: Curso em Vídeo <br />
-                Formação: 25/06/207 - 40 horas
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="card-info-detalhe">
-                <span class="card-titulo"
-                  >Diagrama de Classes com UML - Básico</span
-                >
-              </div>
-              <p class="card-texto">
-                Instituição: EsTube <br />
-                Formação: 07/2017 - 30 horas
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="card-info-detalhe">
-                <span class="card-titulo"
-                  >Estudos de Casos com Diagrama de Sequência UML</span
-                >
-              </div>
-              <p class="card-texto">
-                Instituição: EsTube <br />
-                Formação: 12/2017 - 40 horas
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="card-info-detalhe">
-                <span class="card-titulo"
-                  >Diagramas UML: Sequência e Comunicação</span
-                >
-              </div>
-              <p class="card-texto">
-                Instituição: EsTube <br />
-                Formação: 12/2017 - 40 horas
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="card-info-detalhe">
-                <span class="card-titulo"
-                  >Diagramas de Classes com UML - Avançado</span
-                >
-              </div>
-              <p class="card-texto">
-                Instituição: EsTube <br />
-                Formação: 12/2017 - 30 horas
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="card-info-detalhe">
-                <span class="card-titulo">Curso de PHP</span>
-              </div>
-              <p class="card-texto">
-                Instituição: Curso em Vídeo <br />
-                Formação: 30/12/2017 - 40 horas
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="card-info-detalhe">
-                <span class="card-titulo">PARTICIPANTE DO LAW-RV |UVV</span>
-              </div>
-              <p class="card-texto">
-                Laboratório de aplicações web e de realidade virtual que tem com
-                intuito de aprimorar o aprendizado dos alunos, para o
-                desenvolvimento de novas aplicações
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-r">
-              <div class="timeline-ano-r">2018</div>
-              <div class="card-info-detalhe">
-                <span class="card-titulo">Formalis Informática | Estágio</span>
-              </div>
-              <p class="card-texto">
-                Estágio Fill Stack <br />
-                Período: 11/2018 a 06/2019 <br />
-                Função: documentação, protótipo de tela, banco de dados,
-                front-end, back-end, utilizando angular, typescript e Mysql.
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="card-info-detalhe">
-                <span class="card-titulo">Inglês básico</span>
-              </div>
-              <p class="card-texto">
-                Oportunidade es <br />
-                Formação: 24/07/2018 até 21/08/2018 - 80hr
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-r">
-              <div class="timeline-ano-r">2019</div>
-              <div class="card-info-detalhe">
-                <span class="card-titulo">Compet Engenharia | Estágio</span>
-              </div>
-              <p class="card-texto">
-                Período: 07/2019 a 07/2020 <br />
-                Função: documentação, protótipo de tela, banco de dados,
-                front-end, back-end utilizando Vue (FullStack), typescript e
-                Mysql.
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="timeline-ano-l">2020</div>
-              <div class="card-info-detalhe">
-                <span class="card-titulo"
-                  >Artigo de TCC - Uso do blockchain em iniciativas populares
-                </span>
-              </div>
-              <p class="card-texto">
-                Aprovação de 100% <br />
-                Tecnologia usadas, Linux, Java, bootstrap e blockchain
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-r">
-              <div class="card-info-detalhe">
-                <span class="card-titulo"
-                  >Compet Engenharia | Programadora Jr</span
-                >
-              </div>
-              <p class="card-texto">
-                Período: : 07/2020 a ATUAL <br />
-                Função: documentação, protótipo de tela, banco de dados,
-                front-end, back-end utilizando Vue (FullStack), typescript e
-                Mysql.
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-l">
-              <div class="card-info-detalhe">
-                <span class="card-titulo">Desenvolvimento FullStack</span>
-              </div>
-              <p class="card-texto">
-                Instituição: IGTI <br />
-                React | JavaScript | Html e css | Nodejs
-              </p>
-            </div>
-          </li>
-          <li>
-            <div class="card-info-r">
-              <div class="timeline-ano-r">2021</div>
-              <div class="card-info-detalhe">
-                <span class="card-titulo"
-                  >Criação de sistema para Clínica
-                </span>
-              </div>
-              <p class="card-texto">
-                Período: 01/2020 a 01/2021 <br />
-                Função: Protótipo de tela, banco de dados, front-end, back-end
-                utilizando Vue (FullStack), typescript e Mysql.
-              </p>
-            </div>
-          </li>
-        </ul>
-      </section>
-    </main>
-    <footer>
-      © Flavaine Ribeiro Pirola | flaviane.paula@uvvnet.com.br
-    </footer>
-  </body>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="contact">
+      <div class="container">
+        <p class="label">Contato</p>
+        <h2>Vamos construir <em>juntos?</em></h2>
+        <a class="mail" href="mailto:flaviane.rp@outlook.com">flaviane.rp@outlook.com</a>
+        <p class="phone">(27) 98117-7880</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="ano">2026</span> Flaviane Ribeiro</div>
+  </footer>
+
+  <script>
+    // Atualiza o ano do rodapé automaticamente
+    document.getElementById("ano").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
